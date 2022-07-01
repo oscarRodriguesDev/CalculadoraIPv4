@@ -41,7 +41,11 @@ class Converter:
                     lista_2.append(1)
                 else:
                     lista_2.append(0)
+
             lista.append(lista_2)
+            if len(lista[-1])==7:
+                lista[-1].append(0)
+
         return lista
 
     # convert a mascara binaria em mascara decimal
@@ -65,6 +69,28 @@ class Converter:
                 lista.append(soma)
         return lista
 
+#retorna o prefixo da rede
+
+    @staticmethod
+    def return_prefixo(mask):
+        soma=0
+        var = 0
+        lista = [128,64,32,16,8,4,2,1]
+        mask =Format.format_ip(mask)
+        for x in mask:
+            if x==255:
+                soma+=8
+            else:
+                for y in lista:
+                    var+=y
+                    if var<=x:
+                        soma+=1
+                    else:
+                        return soma
+
+
+
+
 
 if __name__ == '__main__':
     c = Converter.convert_bin('123.123.123.6')
@@ -72,3 +98,6 @@ if __name__ == '__main__':
 
     m = Converter.mask_for_bin('123.123.123.6',26)
     print(m)
+
+    g = Converter.return_prefixo('255.255.255.192')
+    print(g)
