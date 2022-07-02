@@ -7,7 +7,8 @@ para os calculos de redes IPv4
     @staticmethod
     def format_ip(ip):
         """ format_ip
-        retorna o ip formatado, para que sejam realizados as o operações para calculo de ip
+        Retorna o ip fornecido devidamente formatado para que calculos posteriores sejam realizados
+        o valor retornadosera uma lista de inteiros onde cada elemento é um bloco do meu endereço ip
         :param: ip
         :type: string
         :return: list(int)
@@ -23,11 +24,10 @@ para os calculos de redes IPv4
                 bloco=ip[inicio:parada-1]
                 lista.append(int(bloco))
                 inicio = parada
-
         return lista
 
 
 if __name__=='__main__':
-    c = Format.format_ip('10.20.12.45')
+    c = Format.format_ip('10.20.12.40')
     print(c)
 

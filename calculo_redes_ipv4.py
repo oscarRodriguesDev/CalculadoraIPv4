@@ -26,9 +26,15 @@ class CalculoIPV4:
 
     def maskara(self): #retorna a mascara de subrede
        mascara = Converter.return_mascara_sub__rede(Converter.mask_for_bin(self._ip,self._pre))
-       return mascara
+       return mascara[0:4]
 
     def quantidade_host(self):
         return Host.calc_hosts(self._ip,self._pre)
+
+    def broadcast(self):
+        return Host.calc_broadcast(self._ip,self._pre)
+
+    def ip_da_rede(self):
+        return Host.firs_ip(self._ip,self._pre)
 
 

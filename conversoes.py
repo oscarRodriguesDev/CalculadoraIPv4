@@ -13,7 +13,7 @@ class Converter:
             aux = 0
             lista = []
             for num in tabela:
-                if num < x:
+                if num <= x:
                     aux += num
                     if aux > x:
                         aux -= num
@@ -93,8 +93,10 @@ class Converter:
 
 
 if __name__ == '__main__':
-    c = Converter.convert_bin('123.123.123.6')
+    c = Converter.convert_bin('10.20.12.45')
     print(c)
+    c1 = Converter.convert_bin('10.20.12.4')
+    print(c1)
 
     m = Converter.mask_for_bin('123.123.123.6',26)
     print(m)
