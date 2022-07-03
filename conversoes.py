@@ -1,11 +1,25 @@
-# função para converter em binario
+"""
+Modulo Conversões:
+reune diversas funçoes que possibilitam o calculo das redes ipv4
+
+"""
 from formatando_ips import Format
-
-
 class Converter:
+    """Classe Converter:
+    Esta classe é responsavel por fazer a conversão de valores de decimal para binario e de binario para
+    decimal quando necessário, todos as funções desta classe são estaticas
+    """
 
     @staticmethod
     def convert_bin(ip):
+        """Função convert_bin
+        esta função converte o numero ip recebido como paramentro em formato binario, para que as operações necessárias
+        necessarias para o calculo de redes ipv4 sejam realizados sem dificuldade por qualquer outra classe:
+        :param: ip
+        :type: String
+        :return:lista
+        :type: int
+        """
         binario = []
         tabela = [128, 64, 32, 16, 8, 4, 2, 1]
         ip = Format.format_ip(ip)
@@ -26,9 +40,18 @@ class Converter:
         return binario
 
 
-# retorna a mascara de subrede convertida em binario
+
     @staticmethod
-    def mask_for_bin(ip, rd):
+    def mask_for_bin(ip, pre):
+        """ Função mask_for_bin
+        Esta função tem a finalidade de calcular a mascara de subrede em numeros binarios
+        :param pre:
+        :type: int
+        :param ip
+        :type:int
+        :return: lista
+        :type: int
+        """
         lista = []
         lista_2 = []
         contador = 0
@@ -37,7 +60,7 @@ class Converter:
             lista_2 = []
             for y_list in x_list:
                 contador += 1
-                if contador <= rd:
+                if contador <=pre:
                     lista_2.append(1)
                 else:
                     lista_2.append(0)
@@ -48,9 +71,16 @@ class Converter:
 
         return lista
 
-    # convert a mascara binaria em mascara decimal
+
     @staticmethod
-    def return_mascara_sub__rede(masc_bin):
+    def return_mascara_sub_rede(masc_bin):
+        """Função return_mascara_sub_red
+        Esta função retorna a mascara de subrede em valores decimais em uma lista de inteiros
+        :param: masc_bin
+        :type: list
+        :return: lista
+        :type: list(int)
+        """
         conv = [128, 64, 32, 16, 8, 4, 2, 1]
         lista = []
         soma = 0
@@ -69,10 +99,17 @@ class Converter:
                 lista.append(soma)
         return lista
 
-#retorna o prefixo da rede
+
 
     @staticmethod
     def return_prefixo(mask):
+        """Função return_prefixo
+        Esta função retorna o prefixo da rede, atraves da mascara passada como paramentro
+        :param: mask
+        :type: list(int)
+        :return: soma
+        :type: int
+        """
         soma=0
         var = 0
         lista = [128,64,32,16,8,4,2,1]
